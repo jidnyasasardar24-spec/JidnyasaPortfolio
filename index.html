@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jidnyasa | Portfolio</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================
+           GLOBAL STYLING
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffe6f0, #fff0f5);
+            color: #4d004d;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 75px;
+            background: #ffb6c1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 15px rgba(255, 20, 147, 0.2);
+        }
+
+        .left {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #b30059;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 18px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4d004d;
+            font-weight: 500;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #ff1493;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.4s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #ff1493;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero-section {
+            max-width: 85vw;
+            margin: auto;
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-left {
+            flex: 1;
+            animation: slideLeft 1s ease;
+        }
+
+        .hero-right {
+            flex: 1;
+            text-align: center;
+            animation: slideRight 1s ease;
+        }
+
+        .hero-left h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-left h2 {
+            color: #ff1493;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .hero-left p {
+            line-height: 1.9;
+            color: #660033;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .purple {
+            color: #ff1493;
+        }
+
+        .hero-right img {
+            width: 340px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 5px solid #ff69b4;
+            background: white;
+            padding: 8px;
+            box-shadow: 0px 0px 30px rgba(255, 20, 147, 0.4);
+            transition: 0.5s ease;
+        }
+
+        .hero-right img:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0px 0px 40px rgba(255, 20, 147, 0.7);
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn,
+        .btn-outline {
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.4s ease;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: #ff69b4;
+            color: white;
+        }
+
+        .btn:hover {
+            background: #ff1493;
+            transform: translateY(-4px);
+        }
+
+        .btn-outline {
+            border: 2px solid #ff69b4;
+            color: #b30059;
+        }
+
+        .btn-outline:hover {
+            background: #ff69b4;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           SECTION HEADING
+        ========================= */
+
+
+
+        .section-heading::after {
+            content: "";
+            width: 100px;
+            height: 4px;
+            background: #ff69b4;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            border-radius: 10px;
+        }
+
+        /* =========================
+           COMMON SECTION
+        ========================= */
+
+        .about-me,
+        .projects-section,
+        .experience-section {
+            max-width: 85vw;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .experience-container,
+        .project-container,
+        .internship-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .experience-card,
+        .about-card,
+        .course-card,
+        .project-card,
+        .achievement-card,
+        .internship-card {
+            background: #fff0f5;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.2);
+            transition: 0.4s ease;
+        }
+
+        .experience-card:hover,
+        .about-card:hover,
+        .course-card:hover,
+        .project-card:hover,
+        .achievement-card:hover,
+        .internship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        .experience-card h3,
+        .course-card h3,
+        .project-card h3,
+        .internship-card h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+        }
+
+        .experience-card p,
+        .course-card p,
+        .project-card p,
+        .internship-card p,
+        .about-card p {
+            line-height: 1.8;
+        }
+
+        /* =========================
+           IMAGES
+        ========================= */
+
+        .achievement-card {
+            background-color: #fff0f5;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 20px rgba(255, 105, 180, 0.25);
+            transition: 0.4s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 35px rgba(255, 20, 147, 0.4);
+        }
+
+        .achievement-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff1493;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .spoken,
+        .infosys {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spoken h4,
+        .infosys h4 {
+            font-size: 1.1rem;
+            color: #4d004d;
+            margin-bottom: 10px;
+        }
+
+        .photos {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 15px;
+            border: 3px solid #ff69b4;
+            box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.3);
+            transition: 0.4s ease;
+        }
+
+        .photos:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 0px 25px rgba(255, 20, 147, 0.5);
+        }
+
+        #achievements br {
+            display: none;
+        }
+
+        #achievements .achievement-card+.achievement-card {
+            margin-top: 40px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #ffb6c1;
+            margin-top: 80px;
+            padding-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 85vw;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-logo {
+            color: #b30059;
+            margin-bottom: 20px;
+        }
+
+        .footer-box h3 {
+            color: #b30059;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #4d004d;
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff1493;
+            padding-left: 8px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-img {
+            width: 55px;
+            transition: 0.4s ease;
+        }
+
+        .social-img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-line {
+            border: 0;
+            background: rgba(77, 0, 77, 0.2);
+            height: 1px;
+            width: 85%;
+            margin: auto;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* =========================
+           DIVIDER LINE
+        ========================= */
+
+        .line {
+            border: 0;
+            background: #ff69b4;
+            height: 2px;
+            margin: 60px 84px;
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes slideLeft {
+
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideRight {
+
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:900px) {
+
+            .hero-section {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 10px;
+            }
+
+            .hero-left h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-right img {
+                width: 280px;
+                height: 350px;
+            }
+
+            .internship-img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: 15px;
+                border: 3px solid #ff69b4;
+                box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.25);
+                transition: 0.4s ease;
+            }
+
+            .internship-img:hover {
+                transform: scale(1.03);
+                box-shadow: 0px 0px 25px rgba(255, 20, 147, 0.5);
+            }
+
+            .internship-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                align-items: stretch;
+            }
+
+            /* CARD FIX */
+            .internship-card {
+                background: #fff0f5;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.2);
+                transition: 0.4s ease;
+                text-align: center;
+                overflow: hidden;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            /* IMAGE FIX (IMPORTANT) */
+            .internship-img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: 15px;
+                border: 3px solid #ff69b4;
+                box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.25);
+            }
+
+            /* TEXT FIX */
+            .internship-card h3 {
+                color: #ff1493;
+                margin: 15px 0 10px;
+            }
+
+            .internship-card p {
+                color: #4d004d;
+                line-height: 1.6;
+                font-size: 0.95rem;
+            }
+
+            /* HOVER EFFECT */
+            .internship-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0px 0px 30px rgba(255, 20, 147, 0.4);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <nav>
+
+            <div class="left">
+                Jidnyasa's Portfolio
+            </div>
+
+            <div class="right">
+
+                <ul>
+
+                    <li><a href="#home">Home</a></li>
+
+                    <li><a href="#about">About</a></li>
+
+                    <li><a href="#courses">Courses</a></li>
+
+                    <li><a href="#projects">Projects</a></li>
+
+                    <li><a href="#achievements">Achievements</a></li>
+
+                    <li><a href="#internships">Internships</a></li>
+
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section id="home" class="hero-section">
+
+        <div class="hero-left">
+
+            <h1>
+                Hi, I'm <span class="purple">Jidnyasa</span> 👋
+            </h1>
+
+            <h2>
+                <span id="element"></span>
+            </h2>
+
+            <p>
+                Passionate Engineering Student focused on Data Science,
+                Artificial Intelligence, Machine Learning,
+                and Modern Technologies.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#projects" class="btn">
+                    🚀 View Projects
+                </a>
+
+                <a href="#contact" class="btn-outline">
+                    📩 Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+
+            <!-- YOUR PHOTO -->
+
+            <img src="ds.png" alt="Jidnyasa Photo">
+
+        </div>
+
+    </section>
+
+    <hr class="line">
+
+    <!-- ABOUT -->
+
+    <section id="about" class="about-me">
+
+        <h1 class="section-heading">
+            👩‍💻 About Me
+        </h1>
+
+        <div class="about-card">
+
+            <p>
+                Hello! I'm <span class="purple">Jidnyasa</span>,
+                a passionate engineering student with strong interest
+                in technology, Data Science, Graphic Designing & Machine Learning.
+            </p>
+
+            <br>
+
+            <p>
+                I enjoy building responsive websites,
+                learning modern technologies,
+                and improving my coding skills through projects.
+            </p>
+
+        </div>
+
+    </section>
+
+    <hr class="line">
+
+    <!-- COURSES -->
+
+    <section id="courses" class="about-me">
+
+        <h1 class="section-heading">
+            📚 Courses
+        </h1>
+
+        <div class="course-card">
+
+            <h3>🌐 Web Development</h3>
+
+            <p>
+                Learned HTML, CSS, JavaScript,
+                responsive design, Flexbox,
+                Grid, and frontend development.
+            </p>
+
+        </div>
+
+        <br>
+
+        <div class="course-card">
+
+            <h3>☕ Java Programming</h3>
+
+            <p>
+                Studied object-oriented programming,
+                arrays, loops, exception handling,
+                and Java application development.
+            </p>
+
+        </div>
+
+        <br>
+
+        <div class="course-card">
+
+            <h3>🤖 Artificial Intelligence</h3>
+
+            <p>
+                Explored AI concepts,
+                machine learning basics,
+                and beginner AI projects.
+            </p>
+
+        </div>
+        <br>
+
+        <!-- ADD THIS BELOW -->
+
+        <div class="course-card">
+
+            <h3>🧠 Machine Learning</h3>
+
+            <p>
+                Learned the basics of Machine Learning including
+                supervised learning, datasets, data preprocessing,
+                model training, and beginner-level ML projects
+                using modern AI concepts.
+            </p>
+
+        </div>
+
+        <br>
+
+    </section>
+
+    <hr class="line">
+
+    <!-- PROJECTS -->
+
+    <section id="projects" class="projects-section">
+
+        <h1 class="section-heading">
+            🚀 Projects
+        </h1>
+
+        <div class="project-container">
+
+            <div class="project-card">
+
+                <h3>🎨 Portfolio Website</h3>
+
+                <p>
+                    Developed a responsive portfolio website
+                    using HTML, CSS, and JavaScript.
+                </p>
+
+            </div>
+
+            <div class="project-card">
+
+                <h3>🔐 Authentication System</h3>
+
+                <p>
+                    Developed a secure authentication system
+                    with Login and Signup functionality using
+                    modern frontend development concepts.
+                </p>
+
+            </div>
+
+            <div class="project-card">
+
+                <h3>🩺 ML Breast Cancer Prediction Model</h3>
+
+                <p>
+                    Trained a Machine Learning model to predict
+                    breast cancer using medical datasets,
+                    data preprocessing, and classification algorithms.
+                </p>
+
+            </div>
+            <div class="project-card">
+
+                <h3>🌐 Frontend Web Design Projects</h3>
+
+                <p>
+                    Created responsive and interactive frontend
+                    web design projects using HTML, CSS,
+                    Flexbox, Grid, animations, and modern UI styling.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <hr class="line">
+
+    <!-- ACHIEVEMENTS -->
+
+    <section id="achievements" class="about-me">
+
+        <h1 class="section-heading">
+            🏆 Achievements & Certifications
+        </h1>
+
+        <!-- SPOKEN TUTORIAL -->
+        <div class="achievement-card">
+
+            <h2>🎓 Spoken Tutorial Certifications</h2>
+
+            <div class="spoken">
+
+                <img class="photos" src="c-spoken.png" alt="Certificate">
+                <h4>💻 Spoken C Training Certificate</h4>
+
+                <img class="photos" src="python-spoken.png" alt="Certificate">
+                <h4>🐍 Spoken Python Certificate</h4>
+
+                <img class="photos" src="arduino-spoken.png" alt="Certificate">
+                <h4>🔌 Spoken Arduino Training Certificate</h4>
+
+            </div>
+
+        </div>
+
+        <!-- INFOSYS SPRINGBOARD -->
+        <div class="achievement-card">
+
+            <h2>🌟 Infosys Springboard Certifications</h2>
+
+            <div class="infosys">
+
+                <img class="photos" src="java.infosys.png" alt="Certificate">
+                <h4>☕ Java Programming Certificate</h4>
+
+                <img class="photos" src="bda-infosys.png" alt="Certificate">
+                <h4>📊 Big Data Analytics Certificate</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <hr class="line">
+
+    <!-- INTERNSHIPS -->
+
+    <section id="internships" class="projects-section">
+
+        <h1 class="section-heading">
+            💼 Internships & Training
+        </h1>
+
+        <div class="internship-container">
+
+            <!-- 1. ML BOOTCAMP -->
+
+            <div class="internship-card">
+
+                <img class="internship-img" src="ml-bookcamp.jpg" alt="ML Bootcamp Certificate">
+
+                <h3>🤖 Machine Learning Bootcamp Training</h3>
+
+                <p>
+                    Completed a Machine Learning Bootcamp where I learned
+                    ML fundamentals, data preprocessing, model building,
+                    and hands-on project implementation.
+                </p>
+
+            </div>
+
+            <!-- 2. INTEL UNNATI -->
+
+            <div class="internship-card">
+
+                <img class="internship-img" src="intel.jpg" alt="Intel Unnati Certificate">
+
+                <h3>🏭 Intel Unnati Industrial Training</h3>
+
+                <p>
+                    Successfully completed Intel Unnati Industrial Training
+                    and worked on real-world problem-solving and technical projects
+                    under industry guidance.
+                </p>
+
+            </div>
+
+            <!-- 3. ML PROBLEM SOLVING BOOTCAMP -->
+
+            <div class="internship-card">
+
+                <img class="internship-img" src="virtual.png"
+                    alt="AI ML Virtual Internship Certificate">
+
+                <h3>🤖 AI/ML Virtual Internship</h3>
+
+                <p>
+                    Completed an AI/ML Virtual Internship where I explored
+                    artificial intelligence concepts, machine learning basics,
+                    and hands-on exposure to real-world AI applications and tools.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <div class="footer-box">
+
+                <h2 class="footer-logo">
+                    Jidnyasa's Portfolio 💖
+                </h2>
+
+                <p>
+                    Passionate Engineering Student focused on
+                    Web Development and AI.
+                </p>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>
+                    📌 Quick Links
+                </h3>
+
+                <ul class="footer-links">
+
+                    <li><a href="#home">🏠 Home</a></li>
+
+                    <li><a href="#about">👩‍💻 About</a></li>
+
+                    <li><a href="#projects">🚀 Projects</a></li>
+
+                    <li><a href="#contact">📞 Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>
+                    📞 Contact Info
+                </h3>
+
+                <p>
+                    📧 jidnyasa.sardar24@sakec.ac.in
+                </p>
+
+                <p>
+                    📱 +91 7039678711
+                </p>
+
+                <p>
+                    📍 Ghatkopar, Mumbai, Maharashtra, India
+                </p>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>
+                    🌐 Connect With Me
+                </h3>
+
+                <div class="social-icons">
+
+                    <a href="https://www.linkedin.com/in/jidnyasa-sardar-2b0147372?utm_source=share_via&utm_content=profile&utm_medium=member_android">
+
+                        <img class="social-img" src="linkedin.png" alt="LinkedIn">
+
+                    </a>
+
+                    <a href="https://github.com/jidnyasasardar24-spec">
+
+                        <img class="social-img" src="git.png" alt="GitHub">
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="footer-line">
+
+        <div class="footer-bottom">
+
+            © 2026 Jidnyasa | All Rights Reserved
+
+        </div>
+
+    </footer>
+
+    <!-- TYPING EFFECT -->
+
+    <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+
+    <script>
+
+        var typed = new Typed('#element', {
+
+            strings: [
+
+                'Ml Enthusiast',
+                'Engineering Student',
+                'Creative Coder',
+                'AI Enthusiast',
+                'Future Data Scientist'
+
+            ],
+
+            typeSpeed: 50,
+
+            backSpeed: 30,
+
+            loop: true
+
+        });
+
+    </script>
+
+</body>
+
+</html>
